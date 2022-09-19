@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href = "prime.css">
+<title>Prime or Composite</title>
+</head>
+<body>
+<h1><span style="background-color: lightblue;">Prime/Composite Number</span></h1>
+<div>
+<p style="background-color:gainsboro;"> This program finds whether a given number is prime or not.</p>
+    <p> Prime No.: Prime numbers are numbers that have only 2 factors: 1 and themselves. For example, the first 5 prime numbers are 2, 3, 5, 7, and 11.</p>
+    <p> Composite No.:  Numbers with more than 2 factors are call composite numbers. For Example, the first 5 composite numbers are 4, 6, 8, 9, 10.</p>
+    <label for= "tb1">Enter a number: </label> 
+    <input style="font-size:20px;" type="text" placeholder="123" id="tb1" name="tb1"><br>
+<br>
+    <button  style="padding: 5px;font-size: 18px;" type = "submit" id = "submit" onclick="prime()">Submit</button>
+</div>
+    <p id="result" style="padding: 5px;font-size: 40px;
+color: darkblue;"></p>
+    <script>
+        function prime()
+        {
+          let x;
+          var i,flag=0;
+          x = document.getElementById("tb1").value;
+          if(x==1)
+          {
+              document.getElementById("result").innerHTML = "1 is neither a prime nor a composite number."
+          }
+          else
+          {
+          for(i=2; i<x; i++)
+          {
+              if(x % i == 0)
+              {
+                  flag = 1;
+                  break;
+              }
+          }
+          if(flag == 1)
+          {
+              document.getElementById("result").innerHTML = x + " is a Composite Number"; 
+          }
+          else if(flag == 0)
+          {
+              document.getElementById("result").innerHTML  = x + " is a Prime Number";
+          }
+          }
+        }
+    </script>
+
+</body> 
+</html>

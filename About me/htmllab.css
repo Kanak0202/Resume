@@ -1,0 +1,30 @@
+body{border: 1px solid #726d6d;
+border-radius: 10px;
+margin: 22px;
+padding: 25px;}
+a:link{color:pink;}
+a:visited{color:tomato;
+text-decoration: none; }
+a:hover{color:red;}
+table,th,td{color:white; border:1px solid yellow; border-collapse:collapse; font-size : 20px; }
+td{background-color:midnightblue;}
+th{background-color:black; text-align:center;}
+th,td{border-style : dotted; padding:15px;}
+p {font-size : 20px; text-align : justify;}
+h1 { background-color: rgba(255, 0, 0, 0.4);}
+.navbar{background-color: black;
+border-radius: 4px;
+overflow: hidden;}
+nav{height: 70px;}
+.navbar li{float: left;
+list-style: none;
+margin: 8px 18px;}
+.navbar li a:link{color:white;}
+.navbar li a:visited{color:pink;}
+.navbar li a:hover{color:lightblue;}
+.navbar li a{padding: 50px 3px;
+height:70px;
+text-decoration: none;
+color: white;
+font-size: 20px;}
+

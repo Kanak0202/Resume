@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="wthr.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class = "card">
+        <div class="search">
+        <input type="text" class= "screen" placeholder= "search" id="screen" name="screen"><br>
+        
+        <button id="sbut">Search</button>
+    </div>
+    <div class="weather">
+        <h2 class="city">Weather in Jaipur</h2>
+        <div class="temp"><h1 style="font-size: 40px;">25°C</h1></div>
+        <img src="" alt="" class="icon" />
+        <div class="description">Cloudy</div> 
+        <div class="humidity">Humidity: 60%</div>
+        <div class="wind">Wind Speed: 6.2 km/hr</div>
+    </div>    
+    </div>
+
+<script defer>
+let weather={
+  "apiKey" : "2d61f0e76f0fd9b1cd553fced06878ab",
+  fetchWeather : function(city)
+  {
+    fetch("https://api.openweathermap.org/data/2.5/weather?q="
+    + city
+    +"&units=metric&appid="
+    + this.apiKey
+    )
+    .then((response) => response.json())
+    .then((data) => this.displayWeather(data));
+  },
+  displayWeather: function(data)
+  {
+     const{name} = data;
+     const {icon, description} = data.weather[0];
+     const{temp, humidity} = data.main;
+     const {speed} = data.wind;
+     document.querySelector(".city").innerText = "Weather in " + name;
+     document.querySelector(".icon").src= "https://openweathermap.org/img/wn/"+icon+"@2x.png";
+     document.querySelector(".description").innerText = description;
+     document.querySelector(".temp").innerText = temp + "°C";
+     document.querySelector(".humidity").innerText = "Humidity: "+humidity+"%";
+     document.querySelector(".wind").innerText = "Wind speed: "+speed+" km/hr";
+     document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?"+name+"')";
+  },
+  search: function()
+  {
+    this.fetchWeather(document.querySelector(".screen").value);
+  }
+};
+document.querySelector(".search button").addEventListener("click", function() {
+weather.search();
+});
+document.querySelector(".screen").addEventListener("keyup", function(event){
+  if(event.key == "Enter")
+  {
+    weather.search();
+  }
+});</script>
+</body>
+</html>
